@@ -23,7 +23,7 @@
 // a file that cannot be reduced any further.
 
 var crypto = require('crypto');
-var uglify = require('../tools/eliminator/node_modules/uglify-js');
+var uglify = require('../tools/eliminator/node_modules/terser-js');
 
 var nodeFS = require('fs');
 var nodePath = require('path');
@@ -59,7 +59,7 @@ function srcToAst(src) {
 }
 
 function astToSrc(ast, minifyWhitespace) {
-  return uglify.uglify.gen_code(ast, {
+  return uglify.minify.gen_code(ast, {
     debug: debug,
     ascii_only: true,
     beautify: !minifyWhitespace,

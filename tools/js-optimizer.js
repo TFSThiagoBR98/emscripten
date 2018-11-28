@@ -129,7 +129,7 @@ if (typeof print === 'undefined') {
 }
 // *** Environment setup code ***
 
-var uglify = require('../tools/eliminator/node_modules/uglify-js');
+var uglify = require('../tools/eliminator/node_modules/terser-js');
 var fs = require('fs');
 var path = require('path');
 
@@ -169,7 +169,7 @@ function srcToAst(src) {
 }
 
 function astToSrc(ast, minifyWhitespace) {
-  return uglify.uglify.gen_code(ast, {
+  return uglify.minify.gen_code(ast, {
     debug: debug,
     ascii_only: true,
     beautify: !minifyWhitespace,
